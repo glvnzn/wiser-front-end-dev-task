@@ -7,7 +7,7 @@ export type Job = {
   link: string;
 };
 
-export const mockJobs = [
+export const mockJobs: Job[] = [
   {
     id: "job-001",
     title: "Team Member (Stock) – Luton Retail Park",
