@@ -1,3 +1,94 @@
 .hero {
-  //add styles
+  padding: 40px 0 0;
+}
+
+.heading {
+  margin: 0 0 16px;
+  // TODO: swap for Next Display Extended Bold once font files are provided
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.025em;
+  color: var(--foreground);
+}
+
+.subtext {
+  margin: 0 0 32px;
+  max-width: 726px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
+  // #262420 — matches JobListing divider (Figma spec, not pure black)
+  border-bottom: 1px solid #262420;
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: var(--foreground);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--foreground);
+  outline: none;
+
+  &::placeholder {
+    color: var(--foreground);
+    opacity: 1;
+  }
+
+  // Remove native search cancel button
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 24px 0 0;
+  }
+
+  .heading {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .subtext {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .searchInput {
+    font-size: 16px;
+  }
 }

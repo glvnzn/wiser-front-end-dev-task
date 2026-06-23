@@ -1,10 +1,12 @@
 import { mockJobs } from '@/data/mockJobs';
+import { Hero } from '@/app/components/Hero/Hero';
 import { JobRow } from '@/app/components/JobRow/JobRow';
 import styles from './JobListing.module.scss';
 
 export function JobListing() {
   return (
     <main className={styles.jobListing}>
+      <Hero />
       <div className={styles.toolbar}>
         <p className={styles.jobCount}>
           <strong className={styles.jobCountNumber}>{mockJobs.length}</strong>
