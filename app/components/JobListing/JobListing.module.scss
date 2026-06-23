@@ -1,3 +1,17 @@
 .jobListing {
-  //add styles
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 80px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .jobListing {
+    padding: 24px 20px;
+  }
 }

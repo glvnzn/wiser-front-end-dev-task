@@ -1,3 +1,203 @@
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$radius-pill:   30px;     // Figma: 30px on View job button
+$transition:    0.2s ease;
+
+// ─── Desktop layout ────────────────────────────────────────────────────────
+//
+//  title  │  brand  │  location  │  viewjob  │  fav
+//  team   │  brand  │  location  │  viewjob  │  fav
+//
+// brand / location / viewjob / fav span both rows (merged named areas).
+// No border between rows — separation comes from padding only (Figma spec).
+
 .row {
-  //add styles
+  display: grid;
+  grid-template-areas:
+    'title   brand  location  viewjob  fav'
+    'team    brand  location  viewjob  fav';
+  grid-template-columns: 1fr 200px 220px 171px 44px;
+  align-items: center;
+  column-gap: 24px;
+  row-gap: 0;
+  padding: 20px 0;
+  list-style: none;
+}
+
+// ─── Cell assignments ───────────────────────────────────────────────────────
+
+.title {
+  grid-area: title;
+  align-self: end;
+  // Figma: Next Display Extended Bold 18px / 110% lh
+  // TODO: swap for NEXT brand font (Next Display Extended) once assets are available
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--foreground);
+}
+
+.team {
+  grid-area: team;
+  align-self: start;
+  margin-top: 4px;
+  // Figma: Next Display Extended Regular 16px / 140% lh / #000000
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+// Brand column — displays logo <Image /> when asset is available in /public/brands/,
+// falls back to plain text while assets are pending.
+.brand {
+  grid-area: brand;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandLogo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.location {
+  grid-area: location;
+  // Figma: Next Display Extended Regular 16px / 140% lh
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+// ─── View job link ──────────────────────────────────────────────────────────
+// Figma: Fixed 171×40px, border-radius 30px, border 1.5px #000, padding 8px 24px
+
+.viewJob {
+  grid-area: viewjob;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 171px;
+  height: 40px;
+  padding: 8px 24px;
+  border: 1.5px solid var(--foreground);
+  border-radius: $radius-pill;
+  // Figma: Next Display Extended Medium 16px / 150% lh / 2% ls
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--foreground);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color $transition,
+    color $transition;
+
+  &:hover {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 3px;
+  }
+}
+
+// ─── Favourite button ───────────────────────────────────────────────────────
+// Figma: 20×19px star, border 1px #000000, fill #000 when saved
+// SVG fill is controlled via CSS (overrides SVG presentation attribute).
+
+.favourite {
+  grid-area: fav;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--foreground);
+  transition: opacity $transition;
+
+  svg {
+    fill: none;
+    transition: fill $transition;
+  }
+
+  // Designer note (Figma comment #1, Wiz Warde-Aldam): "Optional hover state for favourite jobs"
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.favouriteSaved {
+  svg {
+    fill: currentColor;
+  }
+}
+
+// ─── Mobile layout ─────────────────────────────────────────────────────────
+//
+//  title       │  fav
+//  brand brand brand
+//  team  team  team
+//  location    │  viewjob
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-areas:
+      'title    fav'
+      'brand    brand'
+      'team     team'
+      'location viewjob';
+    grid-template-columns: 1fr auto;
+    column-gap: 12px;
+    row-gap: 6px;
+    padding: 16px 0;
+  }
+
+  .title {
+    align-self: center;
+    font-size: 16px;
+  }
+
+  .team {
+    align-self: center;
+    margin-top: 0;
+    font-size: 14px;
+  }
+
+  .brand {
+    justify-content: flex-start;
+    font-size: 13px;
+  }
+
+  .location {
+    align-self: center;
+    font-size: 14px;
+  }
+
+  .viewJob {
+    align-self: center;
+    min-width: unset;
+    height: auto;
+    padding: 7px 16px;
+    font-size: 14px;
+  }
+
+  .favourite {
+    align-self: start;
+    justify-content: flex-end;
+    padding: 2px 0;
+  }
 }
