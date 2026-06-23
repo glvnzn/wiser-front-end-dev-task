@@ -5,22 +5,23 @@ import styles from './page.module.scss';
 
 export default function Page() {
   return (
-    <div className={styles.layout}>
-      <div className={styles.headerArea}>
-        <Header />
+    <>
+      <Header />
+      <div className={styles.columns}>
+        <main className={styles.content}>
+          <JobListing />
+        </main>
+        <aside className={styles.adPanel}>
+          <Image
+            src="/ads/ad.png"
+            alt=""
+            width={338}
+            height={647}
+            priority
+            className={styles.adPhoto}
+          />
+        </aside>
       </div>
-      <aside className={styles.adPanel}>
-        <Image
-          src="/ads/ad.png"
-          alt=""
-          fill
-          className={styles.adPhoto}
-          sizes="500px"
-        />
-      </aside>
-      <main className={styles.content}>
-        <JobListing />
-      </main>
-    </div>
+    </>
   );
 }

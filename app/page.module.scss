@@ -1,43 +1,39 @@
-.layout {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "content photo";
-  grid-template-columns: 1fr 500px;
-  grid-template-rows: auto 1fr;
-  column-gap: 48px;
-  min-height: 100vh;
-}
-
-.headerArea {
-  grid-area: header;
+.columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
 }
 
 .content {
-  grid-area: content;
+  flex: 1;
+  min-width: 0;
 }
 
 .adPanel {
-  grid-area: photo;
-  position: relative;
-  align-self: start;
-  // Container height = 500px column × (647/338) natural ratio of ad.png
-  aspect-ratio: 338 / 647;
-  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .adPhoto {
-  object-fit: cover;
-  object-position: center top;
+  display: block;
+  // width: 100%;
+  height: auto;
 }
 
 @media (max-width: 768px) {
-  .layout {
-    grid-template-areas:
-      "header"
-      "photo"
-      "content";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 220px 1fr;
+  .columns {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .adPanel {
+    width: 100%;
+    order: -1;
+  }
+
+  .adPhoto {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center center;
   }
 }
