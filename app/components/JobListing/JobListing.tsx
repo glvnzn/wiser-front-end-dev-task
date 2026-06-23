@@ -5,7 +5,7 @@ import styles from './JobListing.module.scss';
 
 export function JobListing() {
   return (
-    <main className={styles.jobListing}>
+    <div className={styles.jobListing}>
       <Hero />
       <div className={styles.toolbar}>
         <p className={styles.jobCount}>
@@ -39,6 +39,6 @@ export function JobListing() {
           <JobRow key={job.id} job={job} />
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

@@ -12,7 +12,7 @@ export function Hero() {
         <label htmlFor="hero-search" className={styles.srOnly}>
           Search careers, teams, locations
         </label>
-        {/* Figma: magnifier exported as /public/brands/magnifier.svg — inlined for currentColor theming */}
+        {/* Inlined from /public/icons/magnifier.svg for currentColor theming */}
         <svg
           width="27"
           height="27"
