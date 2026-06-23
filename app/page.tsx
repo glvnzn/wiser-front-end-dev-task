@@ -18,7 +18,15 @@ export default function Page() {
             width={338}
             height={647}
             priority
-            className={styles.adPhoto}
+            className={styles.adPhotoDesktop}
+          />
+          <Image
+            src="/ads/ad-mobile.png"
+            alt=""
+            width={338}
+            height={647}
+            priority
+            className={styles.adPhotoMobile}
           />
         </aside>
       </div>

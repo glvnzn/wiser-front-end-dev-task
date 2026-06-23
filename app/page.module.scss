@@ -13,10 +13,13 @@
   flex-shrink: 0;
 }
 
-.adPhoto {
+.adPhotoDesktop {
   display: block;
-  // width: 100%;
   height: auto;
+}
+
+.adPhotoMobile {
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -30,9 +33,14 @@
     order: -1;
   }
 
-  .adPhoto {
+  .adPhotoDesktop {
+    display: none;
+  }
+
+  .adPhotoMobile {
+    display: block;
     width: 100%;
-    height: 220px;
+    height: 325px;
     object-fit: cover;
     object-position: center center;
   }
