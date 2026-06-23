@@ -16,7 +16,7 @@ type BrandLogo = {
 
 export const BRAND_LOGOS: Record<string, BrandLogo> = {
   NEXT:               { src: '/brands/next.svg',              width: 80,  height: 28 },
-  "Victoria's Secret":{ src: '/brands/victorias-secret.svg',  width: 130, height: 20 },
+  "Victoria’s Secret": { src: '/brands/victorias-secret.svg', width: 130, height: 20 },
   JOULES:             { src: '/brands/joules.svg',            width: 90,  height: 28 },
   GAP:                { src: '/brands/gap.svg',               width: 48,  height: 40 },
   LIPSY:              { src: '/brands/lipsy.svg',             width: 70,  height: 22 },
