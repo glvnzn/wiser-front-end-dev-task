@@ -1,14 +1,14 @@
 // ─── Tokens ────────────────────────────────────────────────────────────────
-$radius-pill:   30px;     // Figma: 30px on View job button
-$transition:    0.2s ease;
+$radius-pill: 30px;
+$transition:  0.2s ease;
 
-// ─── Desktop layout ────────────────────────────────────────────────────────
+// ─── Desktop grid ──────────────────────────────────────────────────────────
 //
 //  title  │  brand  │  location  │  viewjob  │  fav
 //  team   │  brand  │  location  │  viewjob  │  fav
 //
-// brand / location / viewjob / fav span both rows (merged named areas).
-// No border between rows — separation comes from padding only (Figma spec).
+// brand / location / viewjob / fav span both rows via merged named areas.
+// No border between rows — padding-only separation (Figma spec).
 
 .row {
   display: grid;
@@ -23,13 +23,10 @@ $transition:    0.2s ease;
   list-style: none;
 }
 
-// ─── Cell assignments ───────────────────────────────────────────────────────
-
 .title {
   grid-area: title;
   align-self: end;
-  // Figma: Next Display Extended Bold 18px / 110% lh
-  // TODO: swap for NEXT brand font (Next Display Extended) once assets are available
+  // TODO: swap for Next Display Extended once font files are provided
   font-size: 18px;
   font-weight: 700;
   line-height: 1.1;
@@ -40,15 +37,12 @@ $transition:    0.2s ease;
   grid-area: team;
   align-self: start;
   margin-top: 4px;
-  // Figma: Next Display Extended Regular 16px / 140% lh / #000000
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
   color: var(--foreground);
 }
 
-// Brand column — displays logo <Image /> when asset is available in /public/brands/,
-// falls back to plain text while assets are pending.
 .brand {
   grid-area: brand;
   display: flex;
@@ -64,15 +58,11 @@ $transition:    0.2s ease;
 
 .location {
   grid-area: location;
-  // Figma: Next Display Extended Regular 16px / 140% lh
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
   color: var(--foreground);
 }
-
-// ─── View job link ──────────────────────────────────────────────────────────
-// Figma: Fixed 171×40px, border-radius 30px, border 1.5px #000, padding 8px 24px
 
 .viewJob {
   grid-area: viewjob;
@@ -84,7 +74,6 @@ $transition:    0.2s ease;
   padding: 8px 24px;
   border: 1.5px solid var(--foreground);
   border-radius: $radius-pill;
-  // Figma: Next Display Extended Medium 16px / 150% lh / 2% ls
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
@@ -107,10 +96,6 @@ $transition:    0.2s ease;
   }
 }
 
-// ─── Favourite button ───────────────────────────────────────────────────────
-// Figma: 20×19px star, border 1px #000000, fill #000 when saved
-// SVG fill is controlled via CSS (overrides SVG presentation attribute).
-
 .favourite {
   grid-area: fav;
   display: flex;
@@ -123,6 +108,7 @@ $transition:    0.2s ease;
   color: var(--foreground);
   transition: opacity $transition;
 
+  // SVG fill controlled via CSS — overrides the SVG presentation attribute
   svg {
     fill: none;
     transition: fill $transition;
@@ -146,11 +132,11 @@ $transition:    0.2s ease;
   }
 }
 
-// ─── Mobile layout ─────────────────────────────────────────────────────────
+// ─── Mobile ─────────────────────────────────────────────────────────────────
 //
 //  title       │  fav
-//  brand brand brand
-//  team  team  team
+//  brand  brand brand
+//  team   team  team
 //  location    │  viewjob
 
 @media (max-width: 768px) {
@@ -179,7 +165,11 @@ $transition:    0.2s ease;
 
   .brand {
     justify-content: flex-start;
-    font-size: 13px;
+  }
+
+  .brandLogo {
+    max-height: 24px;
+    width: auto;
   }
 
   .location {

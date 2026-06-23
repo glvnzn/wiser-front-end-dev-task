@@ -4,14 +4,100 @@
   padding: 40px 80px;
 }
 
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.jobCount {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+// "812" bold + "open jobs" regular split — handled via <strong>
+.jobCountNumber {
+  font-weight: 700;
+}
+
+.sortWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.sortSelect {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--foreground);
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.sortChevron {
+  pointer-events: none;
+  color: var(--foreground);
+  flex-shrink: 0;
+}
+
+// #262420 — Figma spec, intentionally not pure black
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #262420;
+  margin: 0;
+}
+
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 768px) {
   .jobListing {
     padding: 24px 20px;
+  }
+
+  .toolbar {
+    padding: 16px 0;
+  }
+
+  .jobCount {
+    font-size: 14px;
+  }
+
+  .sortSelect {
+    font-size: 14px;
   }
 }

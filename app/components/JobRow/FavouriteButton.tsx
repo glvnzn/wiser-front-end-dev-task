@@ -18,11 +18,6 @@ export function FavouriteButton({ jobTitle }: Props) {
       aria-label={saved ? `Remove "${jobTitle}" from saved jobs` : `Save "${jobTitle}"`}
       aria-pressed={saved}
     >
-      {/*
-       * Figma: 20×19.02px star, stroke 1px #000, fill #000 when saved.
-       * Designer note (Figma comment #1 · Page 1 — Wiz Warde-Aldam):
-       * "Optional hover state for favourite jobs"
-       */}
       <svg
         width="20"
         height="19"
