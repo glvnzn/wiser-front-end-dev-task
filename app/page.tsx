@@ -17,6 +17,7 @@ export default function Page() {
             alt=""
             width={338}
             height={647}
+            sizes="(max-width: 768px) 0px, 338px"
             priority
             className={styles.adPhotoDesktop}
           />
@@ -25,6 +26,7 @@ export default function Page() {
             alt=""
             width={338}
             height={647}
+            sizes="(max-width: 768px) 100vw, 0px"
             priority
             className={styles.adPhotoMobile}
           />
